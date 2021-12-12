@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
-    <h1>Search</h1>
+    <div class="search">
+      <h1>Elo</h1>
+    </div> 
   </div>
 </template>
 
@@ -10,8 +12,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.wrapper
-  {
+.wrapper{
   width:250px;
   margin:0;
   padding:30px;
