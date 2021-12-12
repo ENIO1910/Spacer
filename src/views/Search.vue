@@ -59,10 +59,6 @@ export default {
   flex-direction: column;
   width:250px;
 }
-.nameSearch{
-text-align: center;
-margin-bottom:10px;
-}
 input{
   height: 30px;
   border: 0;
