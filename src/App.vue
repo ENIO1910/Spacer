@@ -1,13 +1,16 @@
 <template>
-  <div :class="[{ flexStart: step ===1 },'wrapper']">
+  <div :class="[{ flexStart: step ===1 }, 'wrapper']">
     <transition name="slide">
-      <img src="./assets/logo.svg" class="logo">
+      <img src="./assets/logo.svg" class="logo" v-if="step === 1">
     </transition>
     <transition name="fade">
       <HeroImage v-if="step === 0"/>
     </transition>
     <Claim v-if="step === 0"/>
     <SearchInput v-model="searchValue" @input="handleInput" :dark="step === 1" />
+    <div class="results" v-if="results && !loading && step === 1">
+      <Item v-for="item in results" :item="item" :key="item.data[0].nasa_id"/>
+    </div>
   </div>
 </template>
 
@@ -22,6 +25,8 @@ import SearchInput from '@/components/SearchInput.vue';
 
 import HeroImage from '@/components/HeroImage.vue';
 
+import Item from '@/components/Item.vue';
+
 const API = 'https://images-api.nasa.gov/search';
 export default {
   /* eslint-disable */
@@ -30,6 +35,7 @@ export default {
     Claim,
     SearchInput,
     HeroImage,
+    Item,
   },
   
 
@@ -72,16 +78,29 @@ export default {
     margin:0;
     padding: 0;
     color:rgb(250, 240, 220);
+    background-image: url('./assets/mainimage.jpg') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 25% 5%;
+    background-attachment: fixed;
   }
 
   .fade-enter-active, .fade-leave-active {
     transition: opacity .3s ease;
   }
 
-  .fade-enter, .fade-leave-to
-    /* .fade-leave-active below version 2.1.8 */ {
+  .fade-enter, .fade-leave-to{
       opacity: 0;
+  }
+
+  .slide-enter-active, .slide-leave-active {
+    transition: margin-top .3s ;
+  }
+
+  .slide-enter, .slide-leave-to{
+      margin-top: -50px;
     }
+    
 
   .wrapper{
   display: flex;
@@ -93,14 +112,28 @@ export default {
   margin:0;
   padding:30px;
   justify-content: center;
+  
 
   &.flexStart {
     justify-content: flex-start;
+
     }
   }
   .logo {
     position: absolute;
-    top:40px;
+    top:30px;
     
+  }
+
+  .results{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin-top:50px;
+
+    @media (min-width:768px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
   }
 </style>

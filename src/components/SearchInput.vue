@@ -46,6 +46,7 @@ margin-top:50px;
 display: flex;
 flex-direction: column;
 width:250px;
+color:rgb(250, 240, 220);
 
     @media(min-width: 1024px) {
             font-weight: 400;
@@ -59,8 +60,8 @@ input:focus {
 }
 
 .dark{
-  color: #1e3d4a;
-  border-bottom-color: #1e3d4a;
+  color:rgb(250, 240, 220);
+  color:rgb(250, 240, 220);
 }
 .dark:focus{
   box-shadow: 0 10px 20px -7px rgba(250, 240, 220, .3);
