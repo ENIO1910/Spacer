@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="search">
-    <label for="search">Search</label>
+    <label for="search" class="nameSearch">Search</label>
     <input
     id="search"
     name="search"
@@ -58,6 +58,10 @@ export default {
   display: flex;
   flex-direction: column;
   width:250px;
+}
+.nameSearch{
+text-align: center;
+margin-bottom:10px;
 }
 input{
   height: 30px;
