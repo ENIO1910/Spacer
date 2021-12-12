@@ -1,13 +1,27 @@
 <template>
   <div class="wrapper">
     <label for="search">Search</label>
-    <input id="search" name="search" />
+    <input
+    id="search"
+    name="search"
+    v-model="searchValue"
+    />
   </div>
 </template>
 
 <script>
 export default {
   name: 'Search',
+  data() {
+    return {
+      searchValue: '',
+    };
+  },
+  methods: {
+    handleInput() {
+      console.log(this.searchValue);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
